@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\nanoFramework.Json\JsonArrayAttribute.cs" Link="JsonArrayAttribute.cs" />
+    <Compile Include="..\nanoFramework.Json\JsonConvert.cs" Link="JsonConvert.cs" />
+    <Compile Include="..\nanoFramework.Json\JsonObjectAttribute.cs" Link="JsonObjectAttribute.cs" />
+    <Compile Include="..\nanoFramework.Json\JsonPropertyAttribute.cs" Link="JsonPropertyAttribute.cs" />
+    <Compile Include="..\nanoFramework.Json\JsonToken.cs" Link="JsonToken.cs" />
+    <Compile Include="..\nanoFramework.Json\JsonValue.cs" Link="JsonValue.cs" />
+    <Compile Include="..\nanoFramework.Json\SerializationUtilities.cs" Link="SerializationUtilities.cs" />
+    <Compile Include="..\nanoFramework.Json\StringExtensions.cs" Link="StringExtensions.cs" />
+    <Compile Include="..\nanoFramework.Json\TimeExtensions.cs" Link="TimeExtensions.cs" />
+  </ItemGroup>
+
+</Project>
