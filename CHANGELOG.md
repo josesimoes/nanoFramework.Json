@@ -2,7 +2,91 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoframework.Json/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.0.1-preview.163...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.0-preview.21...HEAD)
+
+**Documentation and other chores:**
+
+- Update 2 nuget dependencies [\#132](https://github.com/nanoframework/nanoFramework.Json/pull/132)
+
+## [v2.1.0-preview.21](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.0-preview.21) (2021-07-16)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.0-preview.19...v2.1.0-preview.21)
+
+**Documentation and other chores:**
+
+- Update 1 nuget dependencies [\#131](https://github.com/nanoframework/nanoFramework.Json/pull/131)
+
+## [v2.1.0-preview.19](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.0-preview.19) (2021-07-15)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.0-preview.17...v2.1.0-preview.19)
+
+**Documentation and other chores:**
+
+- Update 3 NuGet dependencies [\#130](https://github.com/nanoframework/nanoFramework.Json/pull/130)
+
+## [v2.1.0-preview.17](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.0-preview.17) (2021-07-15)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.0-preview.15...v2.1.0-preview.17)
+
+**Documentation and other chores:**
+
+- Update 4 nuget dependencies [\#129](https://github.com/nanoframework/nanoFramework.Json/pull/129)
+
+## [v2.1.0-preview.15](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.0-preview.15) (2021-07-14)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.0-preview.10...v2.1.0-preview.15)
+
+**Documentation and other chores:**
+
+- Update 1 nuget dependencies [\#128](https://github.com/nanoframework/nanoFramework.Json/pull/128)
+- Update 1 nuget dependencies [\#127](https://github.com/nanoframework/nanoFramework.Json/pull/127)
+- Update 1 nuget dependencies [\#125](https://github.com/nanoframework/nanoFramework.Json/pull/125)
+- Update 1 nuget dependencies [\#124](https://github.com/nanoframework/nanoFramework.Json/pull/124)
+
+## [v2.1.0-preview.10](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.0-preview.10) (2021-06-20)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.0-preview.8...v2.1.0-preview.10)
+
+**Documentation and other chores:**
+
+- Update 1 nuget dependencies [\#123](https://github.com/nanoframework/nanoFramework.Json/pull/123)
+- Update 3 NuGet dependencies [\#122](https://github.com/nanoframework/nanoFramework.Json/pull/122)
+
+## [v2.1.0-preview.8](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.0-preview.8) (2021-06-19)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.0-preview.6...v2.1.0-preview.8)
+
+**Documentation and other chores:**
+
+- Update 3 NuGet dependencies [\#121](https://github.com/nanoframework/nanoFramework.Json/pull/121)
+
+## [v2.1.0-preview.6](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.0-preview.6) (2021-06-19)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.0-preview.4...v2.1.0-preview.6)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.10.5-preview.13 to 1.10.5-preview.18 [\#120](https://github.com/nanoframework/nanoFramework.Json/pull/120)
+
+## [v2.1.0-preview.4](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.0-preview.4) (2021-06-17)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.0.1-preview.168...v2.1.0-preview.4)
+
+**Implemented enhancements:**
+
+- Major refactor [\#119](https://github.com/nanoframework/nanoFramework.Json/pull/119)
+
+## [v2.0.1-preview.168](https://github.com/nanoframework/nanoframework.Json/tree/v2.0.1-preview.168) (2021-06-17)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.0.1-preview.166...v2.0.1-preview.168)
+
+**Implemented enhancements:**
+
+- Improvements in DateTime deserialization [\#118](https://github.com/nanoframework/nanoFramework.Json/pull/118)
+
+## [v2.0.1-preview.166](https://github.com/nanoframework/nanoframework.Json/tree/v2.0.1-preview.166) (2021-06-17)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.0.1-preview.163...v2.0.1-preview.166)
 
 **Documentation and other chores:**
 
