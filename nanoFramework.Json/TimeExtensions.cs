@@ -63,9 +63,7 @@ namespace nanoFramework.Json
             string minute = time.Substring(11, 2);
             string second = time.Substring(13, 2);
 
-            // If the input string is non-numeric, Convert.ToInt32() below will throw an exception from the Native code
-            // These exceptions cause annoying delays & output when running in the nanoFramework debugger
-            // Bail out if the input string is non-numeric
+            // Check if any of the date time parts is non-numeric
             if (!IsNumeric(year))
             {
                 return DateTime.MaxValue;
@@ -137,9 +135,7 @@ namespace nanoFramework.Json
             string second = (parts.Length > 5) ? parts[5] : "0";
             string ms = (parts.Length > 6) ? parts[6] : "0";
 
-            // If the input string is non-numeric, Convert.ToInt32() below will throw an exception from the Native code
-            // These exceptions cause annoying delays & output when running in the nanoFramework debugger
-            // Bail out if the input string is non-numeric
+            // Check if any of the date time parts is non-numeric
             if (!IsNumeric(year))
             {
                 return DateTime.MaxValue;
@@ -314,9 +310,7 @@ namespace nanoFramework.Json
         {
             string[] parts = ajax.Split(new char[] { '(', ')' });
 
-            // If the input string is non-numeric, Convert.ToInt64() below will throw an exception from the Native code
-            // These exceptions cause annoying delays & output when running in the nanoFramework debugger
-            // Bail out if the input string is non-numeric
+            // Check if any of the date time parts is non-numeric
             if (parts.Length < 2)
             {
                 return DateTime.MaxValue;
@@ -354,7 +348,7 @@ namespace nanoFramework.Json
                 {
                     try
                     {
-                        dtValue = DateTimeExtensions.FromIso8601(value);
+                        dtValue = FromIso8601(value);
                     }
                     catch
                     {
@@ -366,7 +360,7 @@ namespace nanoFramework.Json
                 {
                     try
                     {
-                        dtValue = DateTimeExtensions.FromASPNetAjax(value);
+                        dtValue = FromASPNetAjax(value);
                     }
                     catch
                     {
@@ -378,7 +372,7 @@ namespace nanoFramework.Json
                 {
                     try
                     {
-                        dtValue = DateTimeExtensions.FromiCalendar(value);
+                        dtValue = FromiCalendar(value);
                     }
                     catch
                     {
