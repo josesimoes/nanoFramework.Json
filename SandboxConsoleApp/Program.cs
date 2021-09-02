@@ -54,19 +54,19 @@ namespace nanoFramework.Json
 
             //        }
 
-            DateTime testTime = new DateTime(2015, 04, 22, 11, 56, 39, 456);
+            //DateTime testTime = new DateTime(2015, 04, 22, 11, 56, 39, 456);
 
 
-            ICollection collection = new ArrayList() { testTime };
+            //ICollection collection = new ArrayList() { testTime };
 
-            string jsonString = JsonConvert.SerializeObject(collection);
+            //string jsonString = JsonConvert.SerializeObject(collection);
 
-            ArrayList convertTime = (ArrayList)JsonConvert.DeserializeObject(jsonString, typeof(ArrayList));
+            //ArrayList convertTime = (ArrayList)JsonConvert.DeserializeObject(jsonString, typeof(ArrayList));
 
-            if (testTime.Ticks != ((DateTime)convertTime[0]).Ticks)
-            {
-                //"Values did not match";
-            }
+            //if (testTime.Ticks != ((DateTime)convertTime[0]).Ticks)
+            //{
+            //    //"Values did not match";
+            //}
 
             //       JsonTestTown myTown = new JsonTestTown
             //       {
@@ -139,6 +139,17 @@ namespace nanoFramework.Json
 
 
 
+            var timestampTests = new JsonTestClassTimestamp()
+            {
+                Timestamp = DateTime.UtcNow,
+                FixedTimestamp = new DateTime(2020, 05, 01, 09, 30, 00)
+            };
+
+
+            var result = JsonConvert.SerializeObject(timestampTests);
+
+            var dserResult = (JsonTestClassTimestamp)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimestamp));
+
         }
     }
 
@@ -173,5 +184,9 @@ namespace nanoFramework.Json
         public JsonTestCompany[] CompaniesInThisTown { get; set; }
         public JsonTestEmployee[] EmployeesInThisTown { get; set; }
     }
-
+    public class JsonTestClassTimestamp
+    {
+        public DateTime Timestamp { get; set; } = DateTime.UtcNow;
+        public DateTime FixedTimestamp { get; set; }
+    }
 }

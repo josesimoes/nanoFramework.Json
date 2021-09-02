@@ -6,12 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\nanoFramework.Json\DeserializationException.cs" Link="DeserializationException.cs" />
     <Compile Include="..\nanoFramework.Json\JsonArray.cs" Link="JsonArray.cs" />
     <Compile Include="..\nanoFramework.Json\JsonConvert.cs" Link="JsonConvert.cs" />
     <Compile Include="..\nanoFramework.Json\JsonObject.cs" Link="JsonObject.cs" />
     <Compile Include="..\nanoFramework.Json\JsonProperty.cs" Link="JsonProperty.cs" />
     <Compile Include="..\nanoFramework.Json\JsonToken.cs" Link="JsonToken.cs" />
     <Compile Include="..\nanoFramework.Json\JsonValue.cs" Link="JsonValue.cs" />
+    <Compile Include="..\nanoFramework.Json\SerializationException.cs" Link="SerializationException.cs" />
     <Compile Include="..\nanoFramework.Json\SerializationUtilities.cs" Link="SerializationUtilities.cs" />
     <Compile Include="..\nanoFramework.Json\StringExtensions.cs" Link="StringExtensions.cs" />
     <Compile Include="..\nanoFramework.Json\TimeExtensions.cs" Link="TimeExtensions.cs" />
