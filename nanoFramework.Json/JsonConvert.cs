@@ -1101,8 +1101,6 @@ namespace nanoFramework.Json
                     //TODO: replace with a mapping array? This switch is really incomplete.
                     ch = ch switch
                     {
-                        '\'' => '\'',
-                        '"' => '"',
                         't' => '\t',
                         'r' => '\r',
                         'n' => '\n',

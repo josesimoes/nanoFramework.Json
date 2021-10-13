@@ -29,7 +29,7 @@ namespace nanoFramework.Json
             }
 
             // Check to see if format contains the timezone ID, or contains UTC reference
-            // Neither means it's localtime
+            // Neither means it's local time
             bool tzid = iCalendar.Contains("TZID");
             bool utc = iCalendar.EndsWith("Z");
             string time;
@@ -120,7 +120,7 @@ namespace nanoFramework.Json
         {
 
             // Check to see if format contains the timezone ID, or contains UTC reference
-            // Neither means it's localtime
+            // Neither means it's local time
             bool utc = date.EndsWith("Z");
 
             string[] parts = date.Split(new char[] { 'T', 'Z', ':', '-', '.', '+', });

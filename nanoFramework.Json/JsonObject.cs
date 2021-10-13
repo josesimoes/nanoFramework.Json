@@ -40,9 +40,6 @@ namespace nanoFramework.Json
 			_members.Add(name.ToLower(), new JsonProperty(name, value));
 		}
 
-
-		private static string indent = "";
-
 		public static JsonObject Serialize(Type type, object oSource)
 		{
 			var result = new JsonObject();
@@ -156,8 +153,6 @@ namespace nanoFramework.Json
 						break;
 				}
 			}
-
-			indent = indent.Substring(6);     // 'Outdent' before returning
 
 			return result;
 		}
