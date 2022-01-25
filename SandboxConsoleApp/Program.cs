@@ -139,17 +139,26 @@ namespace nanoFramework.Json
 
 
 
-            var timestampTests = new JsonTestClassTimestamp()
-            {
-                Timestamp = DateTime.UtcNow,
-                FixedTimestamp = new DateTime(2020, 05, 01, 09, 30, 00)
-            };
+            //var timestampTests = new JsonTestClassTimestamp()
+            //{
+            //    Timestamp = DateTime.UtcNow,
+            //    FixedTimestamp = new DateTime(2020, 05, 01, 09, 30, 00)
+            //};
 
 
-            var result = JsonConvert.SerializeObject(timestampTests);
+            //var result = JsonConvert.SerializeObject(timestampTests);
 
-            var dserResult = (JsonTestClassTimestamp)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimestamp));
+            //var dserResult = (JsonTestClassTimestamp)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimestamp));
 
+            const string jsonComplex = @"{""type"":1,""target"":""ReceiveAdvancedMessage"",""arguments"":[{""age"":22,""name"":""Monica"",""gender"":1,""car"":{""age"":5,""model"":""Tesla""}},{""age"":88,""name"":""Grandpa"",""gender"":0,""car"":{""age"":35,""model"":""Buick""}},3]}";
+            InvocationReceiveMessage invoc = (InvocationReceiveMessage)JsonConvert.DeserializeObject(jsonComplex, typeof(InvocationReceiveMessage));
+
+            //const string jsonArgs = @"{""arguments"":[{""age"":22,""name"":""Monica"",""car"":{""age"":35,""model"":""Buick""}},3]}";
+            //Hashtable args1 = (Hashtable)JsonConvert.DeserializeObject(jsonArgs, typeof(Hashtable));
+
+
+            ////Hashtable desired = (Hashtable)invoc.arguments;
+            ArrayList desired1 = (ArrayList)invoc.arguments;
         }
     }
 
@@ -188,5 +197,17 @@ namespace nanoFramework.Json
     {
         public DateTime Timestamp { get; set; } = DateTime.UtcNow;
         public DateTime FixedTimestamp { get; set; }
+    }
+    internal class InvocationReceiveMessage
+    {
+        public int type { get; set; }
+        public Hashtable headers { get; set; }
+        public string invocationId { get; set; }
+        public string target { get; set; }
+        public ArrayList arguments { get; set; }
+        public string[] streamIds { get; set; }
+        public string error { get; set; }
+        public bool allowReconnect { get; set; }
+        public object result { get; set; }
     }
 }
