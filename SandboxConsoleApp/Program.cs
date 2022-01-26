@@ -152,31 +152,31 @@ namespace nanoFramework.Json
 
 
 
-            //var invocMessage = new InvocationSendMessage
-            //{
-            //    type = 1,
-            //    invocationId = "0",
-            //    arguments = new ArrayList() { 1, 2 },
-            //    target = "Add"
-            //};
+            var invocMessage = new InvocationSendMessage
+            {
+                type = 1,
+                invocationId = "0",
+                arguments = new ArrayList() { 1, 2 },
+                target = "Add"
+            };
 
-            //Console.WriteLine(JsonConvert.SerializeObject(invocMessage));
-
-
-            const string jsonComplex = @"{""type"":1,""target"":""ReceiveAdvancedMessage"",""arguments"":[{""age"":22,""name"":""Monica"",""gender"":1,""car"":{""age"":5,""model"":""Tesla""}},{""age"":88,""name"":""Grandpa"",""gender"":0,""car"":{""age"":35,""model"":""Buick""}},3]}";
-            InvocationReceiveMessage invoc = (InvocationReceiveMessage)JsonConvert.DeserializeObject(jsonComplex, typeof(InvocationReceiveMessage));
-
-            //const string jsonArgs = @"{""arguments"":[{""age"":22,""name"":""Monica"",""car"":{""age"":35,""model"":""Buick""}},3]}";
-            //Hashtable args1 = (Hashtable)JsonConvert.DeserializeObject(jsonArgs, typeof(Hashtable));
-
-            Person arg1 = (Person)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[0]), typeof(Person));
-            Person arg2  = (Person)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[1]), typeof(Person));
-            int argsCount = (int)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[2]), typeof(int));
+            Console.WriteLine(JsonConvert.SerializeObject(invocMessage));
 
 
+            //const string jsonComplex = @"{""type"":1,""target"":""ReceiveAdvancedMessage"",""arguments"":[{""age"":22,""name"":""Monica"",""gender"":1,""car"":{""age"":5,""model"":""Tesla""}},{""age"":88,""name"":""Grandpa"",""gender"":0,""car"":{""age"":35,""model"":""Buick""}},3]}";
+            //InvocationReceiveMessage invoc = (InvocationReceiveMessage)JsonConvert.DeserializeObject(jsonComplex, typeof(InvocationReceiveMessage));
 
-            ////Hashtable desired = (Hashtable)invoc.arguments;
-            ArrayList desired1 = (ArrayList)invoc.arguments;
+            ////const string jsonArgs = @"{""arguments"":[{""age"":22,""name"":""Monica"",""car"":{""age"":35,""model"":""Buick""}},3]}";
+            ////Hashtable args1 = (Hashtable)JsonConvert.DeserializeObject(jsonArgs, typeof(Hashtable));
+
+            //Person arg1 = (Person)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[0]), typeof(Person));
+            //Person arg2  = (Person)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[1]), typeof(Person));
+            //int argsCount = (int)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[2]), typeof(int));
+
+
+
+            //////Hashtable desired = (Hashtable)invoc.arguments;
+            //ArrayList desired1 = (ArrayList)invoc.arguments;
         }
     }
 
