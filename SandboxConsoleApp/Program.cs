@@ -150,11 +150,29 @@ namespace nanoFramework.Json
 
             //var dserResult = (JsonTestClassTimestamp)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimestamp));
 
+
+
+            //var invocMessage = new InvocationSendMessage
+            //{
+            //    type = 1,
+            //    invocationId = "0",
+            //    arguments = new ArrayList() { 1, 2 },
+            //    target = "Add"
+            //};
+
+            //Console.WriteLine(JsonConvert.SerializeObject(invocMessage));
+
+
             const string jsonComplex = @"{""type"":1,""target"":""ReceiveAdvancedMessage"",""arguments"":[{""age"":22,""name"":""Monica"",""gender"":1,""car"":{""age"":5,""model"":""Tesla""}},{""age"":88,""name"":""Grandpa"",""gender"":0,""car"":{""age"":35,""model"":""Buick""}},3]}";
             InvocationReceiveMessage invoc = (InvocationReceiveMessage)JsonConvert.DeserializeObject(jsonComplex, typeof(InvocationReceiveMessage));
 
             //const string jsonArgs = @"{""arguments"":[{""age"":22,""name"":""Monica"",""car"":{""age"":35,""model"":""Buick""}},3]}";
             //Hashtable args1 = (Hashtable)JsonConvert.DeserializeObject(jsonArgs, typeof(Hashtable));
+
+            Person arg1 = (Person)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[0]), typeof(Person));
+            Person arg2  = (Person)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[1]), typeof(Person));
+            int argsCount = (int)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[2]), typeof(int));
+
 
 
             ////Hashtable desired = (Hashtable)invoc.arguments;
@@ -162,15 +180,38 @@ namespace nanoFramework.Json
         }
     }
 
+    internal class InvocationReceiveMessage
+    {
+        public int type { get; set; }
+        public Hashtable headers { get; set; }
+        public string invocationId { get; set; }
+        public string target { get; set; }
+        public ArrayList arguments { get; set; }
+        public string[] streamIds { get; set; }
+        public string error { get; set; }
+        public bool allowReconnect { get; set; }
+        public object result { get; set; }
+    }
+
     public class Person
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Address { get; set; }
-        public DateTime Birthday { get; set; }
-        public int ID { get; set; }
-        public string[] ArrayProperty { get; set; }
-        public Person Friend { get; set; }
+        public int age { get; set; }
+        public string name { get; set; }
+        public Gender gender { get; set; }
+        public Car car { get; set; }
+
+    }
+
+    public class Car
+    {
+        public int age { get; set; }
+        public string model { get; set; }
+    }
+
+    public enum Gender
+    {
+        Male,
+        Female
     }
 
     // Classes to more thoroughly test array serialization/deserialization - added 2021-08-28
@@ -198,16 +239,12 @@ namespace nanoFramework.Json
         public DateTime Timestamp { get; set; } = DateTime.UtcNow;
         public DateTime FixedTimestamp { get; set; }
     }
-    internal class InvocationReceiveMessage
+    public class InvocationSendMessage
     {
-        public int type { get; set; }
-        public Hashtable headers { get; set; }
         public string invocationId { get; set; }
+        public int type { get; set; }
         public string target { get; set; }
         public ArrayList arguments { get; set; }
-        public string[] streamIds { get; set; }
-        public string error { get; set; }
-        public bool allowReconnect { get; set; }
-        public object result { get; set; }
     }
+
 }
