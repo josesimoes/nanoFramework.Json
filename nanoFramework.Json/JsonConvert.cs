@@ -1436,7 +1436,7 @@ namespace nanoFramework.Json
 
                                 var stringValue = sb.ToString();
 
-                                if (DateTimeExtensions.ConvertFromString(stringValue, out DateTime tempDateTime))
+                                if (DateTimeExtensions.ConvertFromString(stringValue, out _))
                                 {
                                     return new LexToken() { TType = TokenType.Date, TValue = stringValue };
                                 }

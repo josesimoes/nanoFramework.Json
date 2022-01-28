@@ -119,7 +119,7 @@ namespace nanoFramework.Json
         /// <returns></returns>
         public static string ToIso8601(DateTime dt)
         {
-            return dt.ToString($"{CultureInfo.CurrentUICulture.DateTimeFormat.SortableDateTimePattern}.fffZ");
+            return dt.ToString($"{CultureInfo.CurrentUICulture.DateTimeFormat.SortableDateTimePattern}.fffffffZ");
         }
 
         /// <summary>
@@ -176,6 +176,13 @@ namespace nanoFramework.Json
 
             if (value.Length >= 18)
             {
+                // check for special case of "null" date
+                if (value == "0001-01-01T00:00:00Z")
+                {
+                    dateTime = DateTime.MinValue;
+                    return true;
+                }
+
                 if (DateTime.TryParse(value, out dateTime))
                 {
                     return true;
@@ -188,6 +195,10 @@ namespace nanoFramework.Json
                 catch
                 {
                     // intended, to catch failed conversion attempt
+                }
+
+                if (dateTime == DateTime.MaxValue)
+                {
                     try
                     {
                         dateTime = FromiCalendar(value);
