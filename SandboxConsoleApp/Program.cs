@@ -5,6 +5,56 @@ namespace nanoFramework.Json
 {
     class Program
     {
+        public static string s_AzureTwinsJsonTestPayload = @"{
+    ""deviceId"": ""nanoDeepSleep"",
+    ""etag"": ""AAAAAAAAAAc="",
+    ""deviceEtag"": ""Njc2MzYzMTQ5"",
+    ""status"": ""enabled"",
+    ""statusUpdateTime"": ""0001-01-01T00:00:00Z"",
+    ""connectionState"": ""Disconnected"",
+    ""lastActivityTime"": ""2021-06-03T05:52:41.4683112Z"",
+    ""cloudToDeviceMessageCount"": 0,
+    ""authenticationType"": ""sas"",
+    ""x509Thumbprint"": {
+                ""primaryThumbprint"": null,
+        ""secondaryThumbprint"": null
+    },
+    ""modelId"": """",
+    ""version"": 381,
+    ""properties"": {
+                ""desired"": {
+                    ""TimeToSleep"": 30,
+            ""$metadata"": {
+                        ""$lastUpdated"": ""2021-06-03T05:37:11.8120413Z"",
+                ""$lastUpdatedVersion"": 7,
+                ""TimeToSleep"": {
+                            ""$lastUpdated"": ""2021-06-03T05:37:11.8120413Z"",
+                    ""$lastUpdatedVersion"": 7
+                }
+                    },
+            ""$version"": 7
+                },
+        ""reported"": {
+                    ""Firmware"": ""nanoFramework"",
+            ""TimeToSleep"": 30,
+            ""$metadata"": {
+                        ""$lastUpdated"": ""2021-06-03T05:52:41.1232797Z"",
+                ""Firmware"": {
+                            ""$lastUpdated"": ""2021-06-03T05:52:41.1232797Z""
+                },
+                ""TimeToSleep"": {
+                            ""$lastUpdated"": ""2021-06-03T05:52:41.1232797Z""
+                }
+                    },
+            ""$version"": 374
+        }
+            },
+    ""capabilities"": {
+                ""iotEdge"": false
+    }
+        }";
+
+
         static void Main(string[] args)
         {
 
@@ -184,23 +234,25 @@ namespace nanoFramework.Json
             //string arg1 = (string)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[1]), typeof(string));
 
 
-            var timestampTests = new JsonTestClassTimestamp()
-            {
-                Timestamp = DateTime.UtcNow,
-                FixedTimestamp = new DateTime(2020, 05, 01, 09, 30, 00)
-            };
+            // var timestampTests = new JsonTestClassTimestamp()
+            // {
+            //     Timestamp = DateTime.UtcNow,
+            //     FixedTimestamp = new DateTime(2020, 05, 01, 09, 30, 00, DateTimeKind.Local)
+            // };
 
-            Console.WriteLine($"fixed timestamp used for test = {timestampTests.FixedTimestamp}");
-            Console.WriteLine($"variable timestamp used for test = {timestampTests.Timestamp}");
+            // Console.WriteLine($"fixed timestamp used for test = {timestampTests.FixedTimestamp}");
+            // Console.WriteLine($"variable timestamp used for test = {timestampTests.Timestamp}");
 
-            var result = JsonConvert.SerializeObject(timestampTests);
-            Console.WriteLine($"Serialized Array: {result}");
+            // var result = JsonConvert.SerializeObject(timestampTests);
+            // Console.WriteLine($"Serialized Array: {result}");
 
-            var dserResult = (JsonTestClassTimestamp)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimestamp));
-            Console.WriteLine($"After Type deserialization: {dserResult}");
+            // var dserResult = (JsonTestClassTimestamp)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimestamp));
+            // Console.WriteLine($"After Type deserialization: {dserResult}");
 
-            var e1 = timestampTests.FixedTimestamp.ToString() == dserResult.FixedTimestamp.ToString(); //cannot handle DateTime, so use ToString()
-           var e2 = timestampTests.Timestamp.ToString() == dserResult.Timestamp.ToString(); //cannot handle DateTime, so use ToString()
+            // var e1 = timestampTests.FixedTimestamp.ToString() == dserResult.FixedTimestamp.ToString(); //cannot handle DateTime, so use ToString()
+            //var e2 = timestampTests.Timestamp.ToString() == dserResult.Timestamp.ToString(); //cannot handle DateTime, so use ToString()
+
+            TwinPayload twinPayload = (TwinPayload)JsonConvert.DeserializeObject(s_AzureTwinsJsonTestPayload, typeof(TwinPayload));
 
 
         }
@@ -273,4 +325,41 @@ namespace nanoFramework.Json
         public ArrayList arguments { get; set; }
     }
 
+    public class TwinPayload
+    {
+        public string deviceId { get; set; }
+        public string etag { get; set; }
+        public string status { get; set; }
+        public DateTime statusUpdateTime { get; set; }
+        public string connectionState { get; set; }
+        public DateTime lastActivityTime { get; set; }
+        public int cloudToDeviceMessageCount { get; set; }
+        public string authenticationType { get; set; }
+        public Hashtable x509Thumbprint { get; set; }
+        public string modelId { get; set; }
+        public int version { get; set; }
+        public TwinProperties properties { get; set; }
+    }
+
+    public class TwinProperties
+    {
+        public Desired desired { get; set; }
+        public Reported reported { get; set; }
+    }
+    public class Desired
+    {
+        public int TimeToSleep { get; set; }
+        public Hashtable _metadata { get; set; }
+    }
+
+    public class Reported
+    {
+        public string Firmware { get; set; }
+
+        public int TimeToSleep { get; set; }
+
+        public Hashtable _metadata { get; set; }
+
+        public int _version { get; set; }
+    }
 }
