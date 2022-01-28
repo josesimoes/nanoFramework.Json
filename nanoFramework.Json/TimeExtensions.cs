@@ -167,37 +167,30 @@ namespace nanoFramework.Json
             return dt;
         }
 
-        internal static DateTime ConvertFromString(string value)
+        internal static bool ConvertFromString(string value, out DateTime dateTime)
         {
             // check if this could be a DateTime value
             // min lenght is 18 for Java format: "Date(628318530718)": 18
 
-            DateTime dtValue = DateTime.MaxValue;
+            dateTime = DateTime.MaxValue;
 
             if (value.Length >= 18)
             {
-                if (dtValue == DateTime.MaxValue)
+                if (DateTime.TryParse(value, out dateTime))
                 {
-                    _ = DateTime.TryParse(value, out dtValue);
+                    return true;
                 }
 
-                if (dtValue == DateTime.MaxValue)
+                try
                 {
-                    try
-                    {
-                        dtValue = FromASPNetAjax(value);
-                    }
-                    catch
-                    {
-                        // intended, to catch failed conversion attempt
-                    }
+                    dateTime = FromASPNetAjax(value);
                 }
-
-                if (dtValue == DateTime.MaxValue)
+                catch
                 {
+                    // intended, to catch failed conversion attempt
                     try
                     {
-                        dtValue = FromiCalendar(value);
+                        dateTime = FromiCalendar(value);
                     }
                     catch
                     {
@@ -206,7 +199,7 @@ namespace nanoFramework.Json
                 }
             }
 
-            return dtValue;
+            return dateTime != DateTime.MaxValue;
         }
     }
 }
