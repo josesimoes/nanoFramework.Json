@@ -152,15 +152,15 @@ namespace nanoFramework.Json
 
 
 
-            var invocMessage = new InvocationSendMessage
-            {
-                type = 1,
-                invocationId = "0",
-                arguments = new ArrayList() { 1, 2 },
-                target = "Add"
-            };
+            //var invocMessage = new InvocationSendMessage
+            //{
+            //    type = 1,
+            //    invocationId = "0",
+            //    arguments = new ArrayList() { 1, 2 },
+            //    target = "Add"
+            //};
 
-            Console.WriteLine(JsonConvert.SerializeObject(invocMessage));
+            //Console.WriteLine(JsonConvert.SerializeObject(invocMessage));
 
 
             //const string jsonComplex = @"{""type"":1,""target"":""ReceiveAdvancedMessage"",""arguments"":[{""age"":22,""name"":""Monica"",""gender"":1,""car"":{""age"":5,""model"":""Tesla""}},{""age"":88,""name"":""Grandpa"",""gender"":0,""car"":{""age"":35,""model"":""Buick""}},3]}";
@@ -177,6 +177,13 @@ namespace nanoFramework.Json
 
             //////Hashtable desired = (Hashtable)invoc.arguments;
             //ArrayList desired1 = (ArrayList)invoc.arguments;
+
+            const string json = @"{""type"":1,""target"":""ReceiveMessage"",""arguments"":[""Feiko"",""testing123""]}";
+            InvocationReceiveMessage invoc = (InvocationReceiveMessage)JsonConvert.DeserializeObject(json, typeof(InvocationReceiveMessage));
+            string arg0 = (string)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[0]), typeof(string));
+            string arg1 = (string)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[1]), typeof(string));
+
+
         }
     }
 
