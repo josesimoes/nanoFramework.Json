@@ -178,10 +178,29 @@ namespace nanoFramework.Json
             //////Hashtable desired = (Hashtable)invoc.arguments;
             //ArrayList desired1 = (ArrayList)invoc.arguments;
 
-            const string json = @"{""type"":1,""target"":""ReceiveMessage"",""arguments"":[""Feiko"",""testing123""]}";
-            InvocationReceiveMessage invoc = (InvocationReceiveMessage)JsonConvert.DeserializeObject(json, typeof(InvocationReceiveMessage));
-            string arg0 = (string)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[0]), typeof(string));
-            string arg1 = (string)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[1]), typeof(string));
+            //const string json = @"{""type"":1,""target"":""ReceiveMessage"",""arguments"":[""Feiko"",""testing123""]}";
+            //InvocationReceiveMessage invoc = (InvocationReceiveMessage)JsonConvert.DeserializeObject(json, typeof(InvocationReceiveMessage));
+            //string arg0 = (string)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[0]), typeof(string));
+            //string arg1 = (string)JsonConvert.DeserializeObject(JsonConvert.SerializeObject(invoc.arguments[1]), typeof(string));
+
+
+            var timestampTests = new JsonTestClassTimestamp()
+            {
+                Timestamp = DateTime.UtcNow,
+                FixedTimestamp = new DateTime(2020, 05, 01, 09, 30, 00)
+            };
+
+            Console.WriteLine($"fixed timestamp used for test = {timestampTests.FixedTimestamp}");
+            Console.WriteLine($"variable timestamp used for test = {timestampTests.Timestamp}");
+
+            var result = JsonConvert.SerializeObject(timestampTests);
+            Console.WriteLine($"Serialized Array: {result}");
+
+            var dserResult = (JsonTestClassTimestamp)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimestamp));
+            Console.WriteLine($"After Type deserialization: {dserResult}");
+
+            var e1 = timestampTests.FixedTimestamp.ToString() == dserResult.FixedTimestamp.ToString(); //cannot handle DateTime, so use ToString()
+           var e2 = timestampTests.Timestamp.ToString() == dserResult.Timestamp.ToString(); //cannot handle DateTime, so use ToString()
 
 
         }
