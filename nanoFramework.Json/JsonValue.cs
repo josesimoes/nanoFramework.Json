@@ -68,7 +68,7 @@ namespace nanoFramework.Json
                 }
                 else if (type == typeof(DateTime))
                 {
-                    return "\"" + DateTimeExtensions.ToIso8601(((DateTime)Value)) + "\"";
+                    return "\"" + DateTimeExtensions.ToIso8601((DateTime)Value) + "\"";
                 }
                 else if (type == typeof(bool))
                 {
