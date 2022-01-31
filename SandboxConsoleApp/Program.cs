@@ -252,8 +252,7 @@ namespace nanoFramework.Json
             // var e1 = timestampTests.FixedTimestamp.ToString() == dserResult.FixedTimestamp.ToString(); //cannot handle DateTime, so use ToString()
             //var e2 = timestampTests.Timestamp.ToString() == dserResult.Timestamp.ToString(); //cannot handle DateTime, so use ToString()
 
-            TwinPayload twinPayload = (TwinPayload)JsonConvert.DeserializeObject(s_AzureTwinsJsonTestPayload, typeof(TwinPayload));
-
+            var invocationMessage = (InvocationReceiveMessage)JsonConvert.DeserializeObject(@"{ ""type"":3,""invocationId"":""1"",""error"":""Failed to invoke \u0027SendMessage\u0027 due to an error on the server. HubException: Method does not exist.""}", typeof(InvocationReceiveMessage));
 
         }
     }
