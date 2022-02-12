@@ -252,8 +252,13 @@ namespace nanoFramework.Json
             // var e1 = timestampTests.FixedTimestamp.ToString() == dserResult.FixedTimestamp.ToString(); //cannot handle DateTime, so use ToString()
             //var e2 = timestampTests.Timestamp.ToString() == dserResult.Timestamp.ToString(); //cannot handle DateTime, so use ToString()
 
-            var invocationMessage = (InvocationReceiveMessage)JsonConvert.DeserializeObject(@"{ ""type"":3,""invocationId"":""1"",""error"":""Failed to invoke \u0027SendMessage\u0027 due to an error on the server. HubException: Method does not exist.""}", typeof(InvocationReceiveMessage));
+            //var invocationMessage = (InvocationReceiveMessage)JsonConvert.DeserializeObject(@"{ ""type"":3,""invocationId"":""1"",""error"":""Failed to invoke \u0027SendMessage\u0027 due to an error on the server. HubException: Method does not exist.""}", typeof(InvocationReceiveMessage));
 
+            JsonTestClassTimespan timeSpanTests = new JsonTestClassTimespan();
+
+            var result = JsonConvert.SerializeObject(timeSpanTests);
+            
+            Console.WriteLine($"Serialized class: {result}");
         }
     }
 
@@ -361,4 +366,13 @@ namespace nanoFramework.Json
 
         public int _version { get; set; }
     }
+
+    public class JsonTestClassTimespan
+    {
+        public TimeSpan Duration1 { get; set; } = TimeSpan.FromMinutes(69);
+        //public TimeSpan Duration2 { get; set; } = TimeSpan.FromSeconds(69 * 10);
+        //public int DummyValue1 { get; set; } = -999;
+        //public uint DummyValue2 { get; set; } = 777;
+    }
+
 }
