@@ -265,7 +265,7 @@ namespace nanoFramework.Json
             }
 
             // we should have everything now
-            timeSpan = new TimeSpan(days, hours, minutes, seconds, 0);
+            timeSpan = new TimeSpan(ticks).Add(new TimeSpan(days, hours, minutes, seconds, 0));
 
             // done here
             return true;
