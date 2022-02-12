@@ -37,6 +37,14 @@ namespace nanoFramework.Json.Test
         public DateTime FixedTimestamp { get; set; }
     }
 
+    public class JsonTestClassTimespan
+    {
+        public TimeSpan Duration1 { get; set; } = TimeSpan.FromMinutes(69);
+        public TimeSpan Duration2 { get; set; } = TimeSpan.FromSeconds(69*10);
+        public int DummyValue1 { get; set; } = -999;
+        public uint DummyValue2 { get; set; } = 777;
+    }
+
     public class JsonTestClassComplex
     {
         public int aInteger { get; set; }
@@ -273,6 +281,32 @@ namespace nanoFramework.Json.Test
             Assert.Equal(timestampTests.Timestamp.ToString(), dserResult.Timestamp.ToString()); //cannot handle DateTime, so use ToString()
 
             Debug.WriteLine("Can_serialize_deserialize_timestamp() - Finished - test succeeded.");
+            Debug.WriteLine("");
+        }
+
+        [TestMethod]
+        public void Can_serialize_deserialize_timespan()
+        {
+            Debug.WriteLine("Can_serialize_deserialize_timespan() - Starting test...");
+
+            var timeSpanTests = new JsonTestClassTimespan()
+            {
+                Duration2 = TimeSpan.FromSeconds(new Random().Next())
+            };
+
+            Debug.WriteLine($"Fixed timespan used for test = {timeSpanTests.Duration1}");
+            Debug.WriteLine($"variable timespan used for test = {timeSpanTests.Duration2}");
+
+            var result = JsonConvert.SerializeObject(timeSpanTests);
+            Debug.WriteLine($"Serialized class: {result}");
+
+            var dserResult = (JsonTestClassTimespan)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimespan));
+            Debug.WriteLine($"After Type deserialization: {dserResult}");
+
+            Assert.Equal(timeSpanTests.Duration1.ToString(), dserResult.Duration1.ToString());
+            Assert.Equal(timeSpanTests.Duration2.ToString(), dserResult.Duration2.ToString());
+
+            Debug.WriteLine("Can_serialize_deserialize_timespan() - Finished - test succeeded.");
             Debug.WriteLine("");
         }
 
