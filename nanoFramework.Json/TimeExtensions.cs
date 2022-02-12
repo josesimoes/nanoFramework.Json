@@ -237,7 +237,7 @@ namespace nanoFramework.Json
             }
 
             int days = 0;
-            int milliseconds = 0;
+            int ticks = 0;
 
             // figure out where the separators are
             int indexOfFirstDot = value.IndexOf('.');
@@ -245,7 +245,7 @@ namespace nanoFramework.Json
             int indexOfSecondDot = indexOfFirstDot > -1 ? value.IndexOf('.', indexOfFirstDot) : -1;
 
             bool hasDays = indexOfFirstDot > 0 && indexOfFirstDot < indexOfFirstColon;
-            bool hasMilliseconds = indexOfSecondDot > indexOfFirstDot;
+            bool hasTicks = hasDays ? indexOfSecondDot > indexOfFirstDot : indexOfSecondDot > -1;
 
             // start parsing
             if (hasDays)
@@ -259,13 +259,13 @@ namespace nanoFramework.Json
             int.TryParse(timeSpanBits[processIndex++], out int minutes);
             int.TryParse(timeSpanBits[processIndex++], out int seconds);
 
-            if (hasMilliseconds)
+            if (hasTicks)
             {
-                int.TryParse(timeSpanBits[processIndex], out milliseconds);
+                int.TryParse(timeSpanBits[processIndex], out ticks);
             }
 
             // we should have everything now
-            timeSpan = new TimeSpan(days, hours, minutes, seconds, milliseconds);
+            timeSpan = new TimeSpan(days, hours, minutes, seconds, 0);
 
             // done here
             return true;
