@@ -259,6 +259,10 @@ namespace nanoFramework.Json
             var result = JsonConvert.SerializeObject(timeSpanTests);
             
             Console.WriteLine($"Serialized class: {result}");
+
+            var dserResult = (JsonTestClassTimespan)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimespan));
+            Console.WriteLine($"After Type deserialization: {dserResult}");
+
         }
     }
 
