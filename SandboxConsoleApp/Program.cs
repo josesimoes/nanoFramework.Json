@@ -254,16 +254,77 @@ namespace nanoFramework.Json
 
             //var invocationMessage = (InvocationReceiveMessage)JsonConvert.DeserializeObject(@"{ ""type"":3,""invocationId"":""1"",""error"":""Failed to invoke \u0027SendMessage\u0027 due to an error on the server. HubException: Method does not exist.""}", typeof(InvocationReceiveMessage));
 
-            JsonTestClassTimespan timeSpanTests = new JsonTestClassTimespan();
-            timeSpanTests.Duration2 = TimeSpan.FromMilliseconds(57);
 
-            var result = JsonConvert.SerializeObject(timeSpanTests);
-            
-            Console.WriteLine($"Serialized class: {result}");
+            JsonTestClassTimeSpan[] _timeSpans = new JsonTestClassTimeSpan[] {
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = TimeSpan.Zero,
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(12, 00, 00),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(10, 20, 00),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(00, 10, 00),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(10, 00, 00),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(00, 00, 59),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(00, 59, 00),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(23, 00, 00),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(23, 59, 59, 99),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(99, 23, 59, 59, 9999999),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(10, 20, 30, 40, 50),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(1, 2, 3),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = TimeSpan.FromDays(14),
+                },
+                new JsonTestClassTimeSpan()
+                {
+                    Duration2 = new TimeSpan(10, 12, 00, 00)
+                }
+            };
 
-            var dserResult = (JsonTestClassTimespan)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimespan));
-            Console.WriteLine($"After Type deserialization: {dserResult}");
+            for (int i = 0; i < _timeSpans.Length; i++)
+            {
+                var result = JsonConvert.SerializeObject(_timeSpans[i]);
+                Console.WriteLine($"Serialized class: {result}");
 
+                var dserResult = (JsonTestClassTimeSpan)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimeSpan));
+                Console.WriteLine($"After Type deserialization: {dserResult}");
+
+                // can't compare TimeSpans directly, using ticks
+                Console.WriteLine($"wrong value, expected {_timeSpans[i].Duration2}, got {dserResult.Duration2}");
+            }
         }
     }
 
@@ -372,7 +433,7 @@ namespace nanoFramework.Json
         public int _version { get; set; }
     }
 
-    public class JsonTestClassTimespan
+    public class JsonTestClassTimeSpan
     {
         public TimeSpan Duration1 { get; set; } = TimeSpan.FromMinutes(69);
         public TimeSpan Duration2 { get; set; }
