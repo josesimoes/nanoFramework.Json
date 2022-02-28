@@ -2,7 +2,32 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/nanoframework.Json/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.2-preview.37...HEAD)
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.2-preview.44...HEAD)
+
+**Documentation and other chores:**
+
+- Fixing complex deserialization with array and objects in them [\#190](https://github.com/nanoframework/nanoFramework.Json/pull/190)
+- Update 1 NuGet dependencies [\#189](https://github.com/nanoframework/nanoFramework.Json/pull/189)
+
+## [v2.1.2-preview.44](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.2-preview.44) (2022-02-17)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.2-preview.42...v2.1.2-preview.44)
+
+**Documentation and other chores:**
+
+- Update 4 NuGet dependencies [\#188](https://github.com/nanoframework/nanoFramework.Json/pull/188)
+
+## [v2.1.2-preview.42](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.2-preview.42) (2022-02-16)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.2-preview.39...v2.1.2-preview.42)
+
+**Implemented enhancements:**
+
+- Improvements in TimeSpan deserialization [\#184](https://github.com/nanoframework/nanoFramework.Json/pull/184)
+
+## [v2.1.2-preview.39](https://github.com/nanoframework/nanoframework.Json/tree/v2.1.2-preview.39) (2022-02-12)
+
+[Full Changelog](https://github.com/nanoframework/nanoframework.Json/compare/v2.1.2-preview.37...v2.1.2-preview.39)
 
 **Implemented enhancements:**
 
