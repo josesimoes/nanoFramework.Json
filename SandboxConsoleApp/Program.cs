@@ -254,78 +254,41 @@ namespace nanoFramework.Json
 
             //var invocationMessage = (InvocationReceiveMessage)JsonConvert.DeserializeObject(@"{ ""type"":3,""invocationId"":""1"",""error"":""Failed to invoke \u0027SendMessage\u0027 due to an error on the server. HubException: Method does not exist.""}", typeof(InvocationReceiveMessage));
 
+            var startTimestamp = Environment.TickCount64;
 
-            JsonTestClassTimeSpan[] _timeSpans = new JsonTestClassTimeSpan[] {
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = TimeSpan.Zero,
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(12, 00, 00),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(10, 20, 00),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(00, 10, 00),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(10, 00, 00),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(00, 00, 59),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(00, 59, 00),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(23, 00, 00),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(23, 59, 59, 99),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(99, 23, 59, 59, 9999999),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(10, 20, 30, 40, 50),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(1, 2, 3),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = TimeSpan.FromDays(14),
-                },
-                new JsonTestClassTimeSpan()
-                {
-                    Duration2 = new TimeSpan(10, 12, 00, 00)
-                }
-            };
+            var dserResult = (InvocationReceiveMessage)JsonConvert.DeserializeObject(testInvocationReceiveMessage, typeof(InvocationReceiveMessage));
 
-            for (int i = 0; i < _timeSpans.Length; i++)
-            {
-                var result = JsonConvert.SerializeObject(_timeSpans[i]);
-                Console.WriteLine($"Serialized class: {result}");
 
-                var dserResult = (JsonTestClassTimeSpan)JsonConvert.DeserializeObject(result, typeof(JsonTestClassTimeSpan));
-                Console.WriteLine($"After Type deserialization: {dserResult}");
+            var ssss = JsonConvert.SerializeObject(dserResult.arguments[2]);
 
-                // can't compare TimeSpans directly, using ticks
-                Console.WriteLine($"wrong value, expected {_timeSpans[i].Duration2}, got {dserResult.Duration2}");
-            }
+            int argsCount = (int)JsonConvert.DeserializeObject(ssss, typeof(int));
+
         }
+
+        private static string testInvocationReceiveMessage = @"{
+        ""type"":1,
+        ""target"":""ReceiveAdvancedMessage"",
+        ""arguments"": [
+            {
+                ""age"":22,
+                ""name"":""Monica"",
+                ""gender"":1,
+                ""car"":{
+                    ""age"":5,
+                    ""model"":""Tesla""
+                }
+            },
+            {
+                ""age"":88,
+                ""name"":""Grandpa"",
+                ""gender"":0,
+                ""car"":{
+                    ""age"":35,
+                    ""model"":""Buick""
+                }
+            },
+            3
+        ]}";
     }
 
     internal class InvocationReceiveMessage
